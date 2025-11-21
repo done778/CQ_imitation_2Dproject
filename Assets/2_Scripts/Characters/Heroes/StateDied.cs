@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 
-public class StateDied : MonoBehaviour, IHeroState
+public class StateDied : IHeroState
 {
+    HeroController hero;
+    public StateDied(HeroController controller)
+    {
+        hero = controller;
+    }
     public void OnEnter()
     {
         

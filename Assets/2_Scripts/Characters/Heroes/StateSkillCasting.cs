@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 
-public class StateSkillCasting : MonoBehaviour, IHeroState
+public class StateSkillCasting : IHeroState
 {
+    HeroController hero;
+    public StateSkillCasting(HeroController controller)
+    {
+        hero = controller;
+    }
     public void OnEnter()
     {
 

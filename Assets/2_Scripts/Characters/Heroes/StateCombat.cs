@@ -1,7 +1,12 @@
 ﻿using UnityEngine;
 
-public class StateCombat : MonoBehaviour, IHeroState
+public class StateCombat : IHeroState
 {
+    HeroController hero;
+    public StateCombat(HeroController controller)
+    {
+        hero = controller;
+    }
     public void OnEnter()
     {
         

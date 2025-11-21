@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HeroController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private IHeroState curState;
+    public HeroBaseStatus status;
     void Start()
     {
-        
+        SetState(new StateMoveForward(this));
+        transform.GetComponentInChildren<CircleCollider2D>().radius = status.AttackRange;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        curState.OnUpdate();
+    }
+
+    public void SetState(IHeroState changeState)
+    {
+        curState?.OnExit();
+        curState = changeState;
+        curState.OnEnter();
     }
 }
