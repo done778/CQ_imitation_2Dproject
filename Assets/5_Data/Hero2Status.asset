@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealthPoint: 70
   AttackPower: 20
-  AttackRange: 3
+  AttackRange: 2.5
+  AttackSpeed: 2.5
