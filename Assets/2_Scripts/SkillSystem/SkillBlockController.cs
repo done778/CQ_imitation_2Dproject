@@ -14,7 +14,8 @@ public class SkillBlockController : MonoBehaviour
     Color secondBlock;
     Color thirdBlock;
 
-    List<GameObject> blockBox;
+    GameObject[] blockBox;
+    int[] blockChainArr;
 
     int curNumOfBlock;
 
@@ -36,11 +37,11 @@ public class SkillBlockController : MonoBehaviour
         thirdBlock = new Color(0.4f, 1f, 0.4f); // 녹색 블록
 
         Button[] buttonArr = GetComponentsInChildren<Button>();
-        Debug.Log($"{buttonArr.Length}");
-        blockBox = new List<GameObject>(buttonArr.Length); // 배열을 리스트로 생성
+        blockBox = new GameObject[buttonArr.Length]; // 버튼 오브젝트 배열
+        blockChainArr = new int[buttonArr.Length]; // 체인 정보를 담을 배열
         for (int i = 0; i < buttonArr.Length; i++) 
         {
-            blockBox.Add(buttonArr[i].gameObject);
+            blockBox[i] = (buttonArr[i].gameObject);
             blockBox[i].transform.GetChild(0).gameObject.SetActive(false);
             blockBox[i].SetActive(false);
         }
@@ -57,7 +58,7 @@ public class SkillBlockController : MonoBehaviour
     {
         while (true) 
         {
-            if (curNumOfBlock < blockBox.Count)
+            if (curNumOfBlock < blockBox.Length)
             {
                  BlockType blockType = (BlockType)Random.Range(0, (int)BlockType.End);
 
@@ -88,6 +89,7 @@ public class SkillBlockController : MonoBehaviour
     public void CheckBlocksChain()
     {
         int numChain = 1; // 최대 3체인까지 체크를 위한 변수
+        int indexChain = 0; // 체인 정보를 담을 변수
         GameObject preBlock = null; // 바로 전 블록
         GameObject curBlock = null; // 현재 블록
         for (int i = 0; i < curNumOfBlock; i++) 
@@ -95,6 +97,7 @@ public class SkillBlockController : MonoBehaviour
             curBlock = blockBox[i];
             if (preBlock == null) // 이전 블록이 없다 == 첫번째 블록
             {
+                blockChainArr[i] = indexChain;
                 preBlock = curBlock;
                 continue;
             }
@@ -111,10 +114,53 @@ public class SkillBlockController : MonoBehaviour
             }
             else
             {
+                indexChain++;
                 numChain = 1;
             }
-
+            blockChainArr[i] = indexChain;
             preBlock = curBlock;
         }
+    }
+
+    // 블록 제거 : 매개변수로 받은 인덱스의 블록을 제거하되, 이것과 연결된 블록도 함께 제거.
+    // 제거 한 후, 뒤에 있던 블록들은 앞으로 당겨지고 이로 인해 다시 체인이 생길 수 있음.
+    public int DeleteChainBlock(int index)
+    {
+        int numChain = 0;
+        int target = blockChainArr[index];
+        int overrideIndex = 0; // 블록 제거 후 뒤에 있는 블록을 당겨오기 위한 인덱스
+        bool isPull = true; // 블록 제거 후 뒤에 블록을 당겨올 필요가 있는가?
+
+        for (int i = 0; i < curNumOfBlock; i++)
+        {
+            if (blockChainArr[i] == target)
+            {
+                if (isPull)
+                {
+                    overrideIndex = i;
+                    isPull = false;
+                }
+                numChain++;
+            }
+            if (blockChainArr[i] > target) {
+                break;
+            }
+        }
+
+        for (int i = overrideIndex; i < curNumOfBlock; i++)
+        {
+            blockBox[i].transform.GetChild(0).gameObject.SetActive(false);
+            if (i + numChain < curNumOfBlock)
+                blockBox[i].GetComponent<Image>().color = blockBox[i + numChain].GetComponent<Image>().color;
+            else
+            {
+                blockBox[i].SetActive(false);
+            }
+        }
+
+        curNumOfBlock -= numChain;
+        CheckBlocksChain();
+        // 제거된 블록의 체인 수 반환
+        return numChain;
     }
 }
