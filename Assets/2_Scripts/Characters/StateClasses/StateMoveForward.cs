@@ -3,33 +3,33 @@ using UnityEngine;
 
 public class StateMoveForward : ICharacterState
 {
-    BaseHero hero;
+    BaseCharacter character;
     Coroutine routine;
     [SerializeField] float moveSpeed = 3f;
 
-    public StateMoveForward(BaseHero controller)
+    public StateMoveForward(BaseCharacter controller)
     {
-        hero = controller;
+        character = controller;
     }
 
     public void OnEnter()
     {
-        routine = hero.StartCrt(OnUpdate());
+        routine = character.StartCrt(OnUpdate());
     }
 
     public void OnExit()
     {
-        hero.EndCrt(routine);
+        character.EndCrt(routine);
     }
 
     public IEnumerator OnUpdate()
     {
-        bool detectedEnemy = false;
-        while (!detectedEnemy) {
-            hero.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-            detectedEnemy = hero.DetectEnemy();
+        bool detectedOpponent = false;
+        while (!detectedOpponent) {
+            character.transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+            detectedOpponent = character.DetectOpponent();
             yield return null;
         }
-        hero.SetState(new StateCombat(hero));
+        character.SetState(new StateCombat(character));
     }
 }

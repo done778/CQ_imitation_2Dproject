@@ -35,12 +35,30 @@ public abstract class BaseCharacter : MonoBehaviour
         StopCoroutine(routine);
     }
 
+    // 자신의 적을 탐지하는 로직 (적은 아군을, 아군은 적을)
+    public bool DetectOpponent()
+    {
+        targetCombat = Physics2D.OverlapCircle(
+            transform.position, 
+            status.AttackRange, 
+            layerMask
+            );
+
+        if (targetCombat != null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    // 일반 공격
     public void BaseAttack(GameObject target)
     {
         target.GetComponent<BaseCharacter>().TakeDamage(status.AttackPower);
         Debug.Log($"{gameObject.name}이(가) {target.name}을 공격");
     }
 
+    // 피격 로직
     private void TakeDamage(int damage)
     {
         CurHealthPoint -= damage;
@@ -49,9 +67,10 @@ public abstract class BaseCharacter : MonoBehaviour
             Died();
         }
     }
+
+    // 사망 로직
     private void Died()
     {
-        Time.timeScale = 0f;
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

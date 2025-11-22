@@ -21,11 +21,15 @@ public class StateCombat : ICharacterState
     {
         character.EndCrt(routine);
     }
+
+    // 일정 시간 간격으로 공격, 스킬을 사용하거나 공격 대상이 사라지면 탈출
     public IEnumerator OnUpdate()
     {
-        while (true) {
+        // 아직 스킬 구현 전이라 공격 대상 사라지는 조건만 작성
+        while (character.targetCombat != null) {
             character.BaseAttack(character.targetCombat.gameObject);
             yield return delay;
         }
+        character.SetState(new StateMoveForward(character));
     }
 }

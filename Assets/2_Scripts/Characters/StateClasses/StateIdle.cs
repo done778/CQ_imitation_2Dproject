@@ -17,20 +17,28 @@ public class StateIdle : ICharacterState
         routine = character.StartCrt(OnUpdate());
     }
 
-    // 빠져나갈 때 공격 타겟 탐색
     public void OnExit()
     {
-        character.targetCombat = Physics2D.OverlapCircle(character.transform.position, 50f, character.layerMask);
         character.EndCrt(routine);
     }
 
-    // 공격 받으면(체력이 깎이면) 상태 전이
     public IEnumerator OnUpdate()
     {
+        // 공격 받으면(체력이 깎이면) 상태 전이
         while (character.status.HealthPoint == character.CurHealthPoint) 
         {
             yield return delay;
         }
-        character.SetState(new StateCombat(character));
+        // 자신의 공격 사거리 내 적이 있는지 판별
+        bool isDetected = character.targetCombat = Physics2D.OverlapCircle(
+            character.transform.position, 
+            character.status.AttackRange, 
+            character.layerMask
+            );
+
+        if ( isDetected ) // 감지 되었다면 전투 상태로 전환
+            character.SetState(new StateCombat(character));
+        else // 그렇지 않다면 앞으로 이동하여 탐색
+            character.SetState(new StateMoveForward(character));
     }
 }
