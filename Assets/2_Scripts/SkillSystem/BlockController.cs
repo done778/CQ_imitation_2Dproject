@@ -25,6 +25,11 @@ public class BlockController : MonoBehaviour
         createBlocks = StartCoroutine(CreateBlock());
     }
 
+    private void OnDestroy()
+    {
+        StopCoroutine(createBlocks);
+    }
+
     void Init()
     {
         blockModel = new BlockModel();
@@ -45,5 +50,6 @@ public class BlockController : MonoBehaviour
     {
         SkillBlock block = blockModel.DeleteBlocks(index);
         blockView.UpdateBlockUI();
+        // 이제 이 가져온 블록으로 스킬 시전을 구현해야 함.
     }
 }

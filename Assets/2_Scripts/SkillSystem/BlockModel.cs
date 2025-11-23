@@ -84,6 +84,7 @@ public class BlockModel
             index++;
         }
 
+        // 뒤에 있는 애 땡기고 체인도 일단 해제함.
         for (int i = overrideIndex; i < CurNumOfBlock; i++)
         {
             if (i + numChain < CurNumOfBlock)
@@ -99,6 +100,8 @@ public class BlockModel
         }
 
         CurNumOfBlock -= numChain;
+
+        // 변경된 블록 배열에 다시 체인 검사까지 실행
         CheckChainBlocks();
 
         // 제거된 블록의 체인 수 할당

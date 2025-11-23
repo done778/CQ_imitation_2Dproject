@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+// 구버전 컨트롤러. 사용 안함.
 public class SkillBlockController : MonoBehaviour
 {
     // [SerializeField] private GameObject skillBlock;
