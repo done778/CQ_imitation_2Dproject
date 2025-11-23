@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3260111708654826311}
   - component: {fileID: 2256856831635615603}
   - component: {fileID: 7105996690817038600}
-  - component: {fileID: 4880652279010297360}
+  - component: {fileID: 8531027961730769546}
   m_Layer: 5
   m_Name: BlockBox
   m_TagString: Untagged
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4880652279010297360
+--- !u!114 &8531027961730769546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,9 +95,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8398429298503724603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16f0f4161fcad0d4a8c2857ac356171b, type: 3}
+  m_Script: {fileID: 11500000, guid: cc92041ceac85fb43b30200a8ab06557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockView: {fileID: 0}
 --- !u!1001 &362205191228686031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,6 +190,14 @@ PrefabInstance:
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8531027961730769546}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastingSkillBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlockController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -299,6 +308,14 @@ PrefabInstance:
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8531027961730769546}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastingSkillBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlockController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -409,6 +426,14 @@ PrefabInstance:
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8531027961730769546}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastingSkillBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlockController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7314902302028208688, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_Name
@@ -515,6 +540,14 @@ PrefabInstance:
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8531027961730769546}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastingSkillBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlockController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -625,6 +658,14 @@ PrefabInstance:
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8531027961730769546}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastingSkillBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlockController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -735,6 +776,14 @@ PrefabInstance:
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8531027961730769546}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastingSkillBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlockController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -845,6 +894,14 @@ PrefabInstance:
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8531027961730769546}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastingSkillBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlockController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -955,6 +1012,14 @@ PrefabInstance:
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8531027961730769546}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastingSkillBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlockController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -1065,6 +1130,14 @@ PrefabInstance:
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8531027961730769546}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastingSkillBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlockController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -1175,6 +1248,14 @@ PrefabInstance:
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8531027961730769546}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CastingSkillBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BlockController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3324969564786532810, guid: 9663d606b2a24794aa482e3153456e2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument

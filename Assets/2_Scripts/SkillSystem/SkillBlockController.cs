@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BlockType
-{
-    First, Second, Third, End
-}
+
 public class SkillBlockController : MonoBehaviour
 {
     // [SerializeField] private GameObject skillBlock;
@@ -60,17 +57,17 @@ public class SkillBlockController : MonoBehaviour
         {
             if (curNumOfBlock < blockBox.Length)
             {
-                 BlockType blockType = (BlockType)Random.Range(0, (int)BlockType.End);
+                BlockType blockType = (BlockType)Random.Range(1, (int)BlockType.End);
 
                 switch (blockType)
                 {
-                    case BlockType.First:
+                    case BlockType.Blue:
                         blockBox[curNumOfBlock].GetComponent<Image>().color = firstBlock;
                         break;
-                    case BlockType.Second:
+                    case BlockType.Red:
                         blockBox[curNumOfBlock].GetComponent<Image>().color = secondBlock;
                         break;
-                    case BlockType.Third:
+                    case BlockType.Green:
                         blockBox[curNumOfBlock].GetComponent<Image>().color = thirdBlock;
                         break;
                     default:
@@ -149,7 +146,7 @@ public class SkillBlockController : MonoBehaviour
 
         for (int i = overrideIndex; i < curNumOfBlock; i++)
         {
-            blockBox[i].transform.GetChild(0).gameObject.SetActive(false);
+            blockBox[i].transform.GetChild(0).gameObject.SetActive(false); // 체인 이미지 비활성화
             if (i + numChain < curNumOfBlock)
                 blockBox[i].GetComponent<Image>().color = blockBox[i + numChain].GetComponent<Image>().color;
             else
