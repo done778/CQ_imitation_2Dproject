@@ -8,6 +8,7 @@ public class Hero_3 : BaseHero
     }
     public override void SkillLogic(int chain)
     {
-        Debug.Log($"{heroName}, {chain} 체인으로 스킬 발동!");
+        BattleManager.Instance.Healing( (int)(30 * chainBonus[chain]) );
+        Debug.Log($"{heroName}, {chain} 체인으로 회복 스킬 발동!");
     }
 }

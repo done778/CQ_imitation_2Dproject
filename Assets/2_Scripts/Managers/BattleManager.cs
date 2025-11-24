@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum HeroPosition
@@ -57,7 +55,7 @@ public class BattleManager : SingletonePattern <BattleManager>
 
     public void BaseAttackInteraction(BaseCharacter Attacker, BaseCharacter target)
     {
-        if (Attacker.CompareTag("Enemy"))
+        if (target.CompareTag("Player"))
         {
             curPartyHealthPoint -= Attacker.status.AttackPower;
             changePlayerHp?.Invoke(curPartyHealthPoint, maxPartyHealthPoint);
@@ -82,6 +80,32 @@ public class BattleManager : SingletonePattern <BattleManager>
             foreach (var hero in heroEntry)
             {
                 hero.Died();
+            }
+        }
+    }
+
+    public void Healing(int amount)
+    {
+        curPartyHealthPoint += amount;
+        if (curPartyHealthPoint > maxPartyHealthPoint) 
+        {
+            curPartyHealthPoint = maxPartyHealthPoint;
+        }
+        changePlayerHp?.Invoke(curPartyHealthPoint, maxPartyHealthPoint);
+    }
+
+    public void SkillAttackInteraction(BaseCharacter target, int damage)
+    {
+        if (target.CompareTag("Boss"))
+        {
+            // 보스 체력으로 수정할 것
+            
+        }
+        else
+        {
+            if (target is NormalEnemyController)
+            {
+                (target as NormalEnemyController).TakeDamage(damage);
             }
         }
     }

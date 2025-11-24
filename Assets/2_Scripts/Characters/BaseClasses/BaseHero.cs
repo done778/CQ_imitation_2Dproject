@@ -7,10 +7,18 @@ public abstract class BaseHero : BaseCaster
 {
     protected string heroName;
 
+    public Dictionary<int, float> chainBonus;
+
     void Awake()
     {
         Init();
         SkillQueue = new Queue<int>();
+        chainBonus = new Dictionary<int, float>();
+
+        chainBonus[1] = 1f;
+        chainBonus[2] = 2.2f;
+        chainBonus[3] = 4.5f;
+
         stateMoveForward = new StateMoveForward(this);
         stateCombat = new StateCombat(this);
         stateSkillCasting = new StateSkillCasting(this);
