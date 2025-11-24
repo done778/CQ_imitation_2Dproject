@@ -5,7 +5,7 @@
 // 플레이어에게 공격을 받으면 전투 상태로 전이함.
 public class NormalEnemyController : BaseCharacter
 {
-    void Start()
+    void Awake()
     {
         Init();
         stateIdle = new StateIdle(this);

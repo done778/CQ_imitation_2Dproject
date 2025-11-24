@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,15 +20,20 @@ public class BattleManager : SingletonePattern <BattleManager>
     // 왜냐하면 스킬 블록 타입과 매칭이 되어야하기 때문
 
     [SerializeField] private BaseHero[] heroEntry;
-    private int totalHealthPoint;
+    private int maxPartyHealthPoint;
+    private int curPartyHealthPoint;
 
-    public void Init()
+    public event Action<int, int> changePlayerHp;
+
+    public void Start()
     {
-        totalHealthPoint = 0;
-        heroEntry = new BaseHero[3];
+        maxPartyHealthPoint = 0;
+        //heroEntry = new BaseHero[3];
         foreach (var hero in heroEntry) {
-            totalHealthPoint += hero.status.HealthPoint;
+            maxPartyHealthPoint += hero.status.HealthPoint;
         }
+        curPartyHealthPoint = maxPartyHealthPoint;
+        changePlayerHp?.Invoke(curPartyHealthPoint, maxPartyHealthPoint);
     }
 
     public void CastingSkill(SkillBlock block)
@@ -46,6 +52,27 @@ public class BattleManager : SingletonePattern <BattleManager>
             default:
                 Debug.LogError("Input wrong SkillBlock type");
                 break;
+        }
+    }
+
+    public void BaseAttackInteraction(BaseCharacter Attacker, BaseCharacter target)
+    {
+        if (Attacker.CompareTag("Enemy"))
+        {
+            curPartyHealthPoint -= Attacker.status.AttackPower;
+            changePlayerHp?.Invoke(curPartyHealthPoint, maxPartyHealthPoint);
+        }
+        else
+        {
+            int cur = target.TakeDamage(Attacker.status.AttackPower);
+        }
+        Debug.Log($"{Attacker.name}이(가) {target.name}을 공격!");
+        if (curPartyHealthPoint <= 0) 
+        {
+            foreach (var hero in heroEntry)
+            {
+                hero.Died();
+            }
         }
     }
 }

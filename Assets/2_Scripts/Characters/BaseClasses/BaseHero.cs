@@ -7,7 +7,7 @@ public abstract class BaseHero : BaseCaster
 {
     protected string heroName;
 
-    void Start()
+    void Awake()
     {
         Init();
         SkillQueue = new Queue<int>();

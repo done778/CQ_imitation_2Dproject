@@ -15,4 +15,4 @@ MonoBehaviour:
   HealthPoint: 40
   AttackPower: 30
   AttackRange: 6
-  AttackSpeed: 3
+  AttackSpeed: 1.6

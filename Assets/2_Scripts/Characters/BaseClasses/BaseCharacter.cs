@@ -59,22 +59,23 @@ public abstract class BaseCharacter : MonoBehaviour
     // 일반 공격
     public void BaseAttack(GameObject target)
     {
-        target.GetComponent<BaseCharacter>().TakeDamage(status.AttackPower);
-        Debug.Log($"{gameObject.name}이(가) {target.name}을 공격");
+        BaseCharacter hit = target.GetComponent<BaseCharacter>();
+        BattleManager.Instance.BaseAttackInteraction(this, hit);
     }
 
     // 피격 로직
-    private void TakeDamage(int damage)
+    public int TakeDamage(int damage)
     {
         CurHealthPoint -= damage;
         if (CurHealthPoint <= 0)
         {
             Died();
         }
+        return CurHealthPoint;
     }
 
     // 사망 로직
-    private void Died()
+    public void Died()
     {
         Destroy(gameObject);
     }

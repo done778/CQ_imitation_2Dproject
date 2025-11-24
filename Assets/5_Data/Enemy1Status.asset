@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
   m_Name: Enemy1Status
   m_EditorClassIdentifier: 
-  HealthPoint: 120
-  AttackPower: 10
+  HealthPoint: 100
+  AttackPower: 30
   AttackRange: 2
   AttackSpeed: 1.2
