@@ -6,6 +6,11 @@ using UnityEngine;
 public abstract class BaseCharacter : MonoBehaviour
 {
     public CharacterBaseStatus status;
+    public StateIdle stateIdle;
+    public StateMoveForward stateMoveForward;
+    public StateCombat stateCombat;
+    public StateSkillCasting stateSkillCasting;
+
     private ICharacterState curState;
     [SerializeField] public LayerMask layerMask;
     [HideInInspector] public Collider2D targetCombat;

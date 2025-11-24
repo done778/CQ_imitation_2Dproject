@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-// 베이스 영웅(플레이어 진영) 클래스. 초기 상태와 적 감지를 공통으로 가짐.
-// 영웅 스킬은 이 클래스를 상속받는 각각의 영웅 클래스에서 구현
+// 베이스 보스(적 진영) 클래스.
+// 보스의 특수 공격은 각각의 보스 클래스에 구현.
 
-public abstract class BaseHero : BaseCaster
+public abstract class BaseBoss : BaseCaster
 {
-    protected string heroName;
+    protected string bossName;
 
     void Start()
     {

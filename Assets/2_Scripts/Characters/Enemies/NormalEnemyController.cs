@@ -8,6 +8,10 @@ public class NormalEnemyController : BaseCharacter
     void Start()
     {
         Init();
-        SetState(new StateIdle(this));
+        stateIdle = new StateIdle(this);
+        stateMoveForward = new StateMoveForward(this);
+        stateCombat = new StateCombat(this);
+        stateSkillCasting = new StateSkillCasting(this);
+        SetState(stateIdle);
     }
 }

@@ -27,9 +27,16 @@ public class StateCombat : ICharacterState
     {
         // 아직 스킬 구현 전이라 공격 대상 사라지는 조건만 작성
         while (character.targetCombat != null) {
+            if (character is IUsableSkill)
+            {
+                if ((character as IUsableSkill).IsWaitingSkill())
+                {
+                    character.SetState(character.stateSkillCasting);
+                }
+            }
             character.BaseAttack(character.targetCombat.gameObject);
             yield return delay;
         }
-        character.SetState(new StateMoveForward(character));
+        character.SetState(character.stateMoveForward);
     }
 }

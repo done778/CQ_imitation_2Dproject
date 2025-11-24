@@ -19,7 +19,6 @@ public class BlockController : MonoBehaviour
     private void Start()
     {
         Button[] childrenArr = GetComponentsInChildren<Button>();
-        Debug.Log($"{childrenArr.Length}");
         blockModel.Init(childrenArr.Length);
         blockView.Init(blockModel, childrenArr);
         createBlocks = StartCoroutine(CreateBlock());
@@ -50,6 +49,7 @@ public class BlockController : MonoBehaviour
     {
         SkillBlock block = blockModel.DeleteBlocks(index);
         blockView.UpdateBlockUI();
-        // 이제 이 가져온 블록으로 스킬 시전을 구현해야 함.
+        // 가져온 블록을 배틀매니저에게 넘겨 스킬을 시전.
+        BattleManager.Instance.CastingSkill(block);
     }
 }
