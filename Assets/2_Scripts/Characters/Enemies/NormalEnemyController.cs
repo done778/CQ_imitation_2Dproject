@@ -3,8 +3,30 @@
 // 공격 받을 시 주변 영웅 탐색
 // 자신의 공격 사거리 내 영웅이 있다면 Combat으로, 없다면 전진하며 탐색.
 // 플레이어에게 공격을 받으면 전투 상태로 전이함.
+using System;
+using UnityEngine;
+using UnityEngine.UI;
+
 public class NormalEnemyController : BaseCharacter
 {
+    [SerializeField] private Image enemyHpBar;
+
+    // 피격 로직
+    public void TakeDamage(int damage)
+    {
+        CurHealthPoint -= damage;
+        if (CurHealthPoint <= 0)
+        {
+            Died();
+        }
+        EnemyHpUpdate(CurHealthPoint, status.HealthPoint);
+    }
+
+    private void EnemyHpUpdate(int cur, int max)
+    {
+        enemyHpBar.fillAmount = (float)cur / max;
+    }
+
     void Awake()
     {
         Init();

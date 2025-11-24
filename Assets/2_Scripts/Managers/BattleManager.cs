@@ -62,9 +62,19 @@ public class BattleManager : SingletonePattern <BattleManager>
             curPartyHealthPoint -= Attacker.status.AttackPower;
             changePlayerHp?.Invoke(curPartyHealthPoint, maxPartyHealthPoint);
         }
+        else if (target.CompareTag("Boss"))
+        {
+            // 보스 체력으로 수정할 것
+            curPartyHealthPoint -= Attacker.status.AttackPower;
+            changePlayerHp?.Invoke(curPartyHealthPoint, maxPartyHealthPoint);
+        }
         else
         {
-            int cur = target.TakeDamage(Attacker.status.AttackPower);
+            if (target is NormalEnemyController)
+            {
+                (target as NormalEnemyController).TakeDamage(Attacker.status.AttackPower);
+            }
+            
         }
         Debug.Log($"{Attacker.name}이(가) {target.name}을 공격!");
         if (curPartyHealthPoint <= 0) 

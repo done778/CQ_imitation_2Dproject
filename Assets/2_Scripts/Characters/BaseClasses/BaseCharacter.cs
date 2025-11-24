@@ -63,17 +63,6 @@ public abstract class BaseCharacter : MonoBehaviour
         BattleManager.Instance.BaseAttackInteraction(this, hit);
     }
 
-    // 피격 로직
-    public int TakeDamage(int damage)
-    {
-        CurHealthPoint -= damage;
-        if (CurHealthPoint <= 0)
-        {
-            Died();
-        }
-        return CurHealthPoint;
-    }
-
     // 사망 로직
     public void Died()
     {
