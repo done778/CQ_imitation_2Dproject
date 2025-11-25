@@ -22,21 +22,33 @@ public class BattleManager : SingletonePattern <BattleManager>
 
     // 그리고 플레이어와 적이 직접 서로 메서드를 호출하지 않고 얘를 통해서 상호작용하도록 한다.
 
-    [SerializeField] private BaseHero[] heroEntry;
+    private BaseHero[] heroEntry;
     private int maxPartyHealthPoint;
     private int curPartyHealthPoint;
 
     public event Action<int, int> changePlayerHp;
 
-    public void Start()
+    protected override void Awake()
+    {
+        base.Awake();
+        heroEntry = new BaseHero[3];
+    }
+
+    // 스테이지 씬 들어갔을 때 실행될 메서드
+    public void StageSceneInit()
     {
         maxPartyHealthPoint = 0;
-        //heroEntry = new BaseHero[3];
         foreach (var hero in heroEntry) {
             maxPartyHealthPoint += hero.status.HealthPoint;
         }
         curPartyHealthPoint = maxPartyHealthPoint;
         changePlayerHp?.Invoke(curPartyHealthPoint, maxPartyHealthPoint);
+    }
+
+    // 영웅 엔트리 설정 메서드
+    public void SetHeroEntry()
+    {
+
     }
 
     public void CastingSkill(SkillBlock block)

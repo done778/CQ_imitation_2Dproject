@@ -1,11 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : SingletonePattern <GameManager>
+public class GameManager : SingletonePattern<GameManager>
 {
-    void Start()
+    bool isLoading;
+
+    private void Start()
     {
-        
+        Application.targetFrameRate = 60;
+    }
+    public void LoadScene(string sceneName)
+    {
+        if (isLoading) return;
+        isLoading = true;
+        SceneManager.LoadScene(sceneName);
+        isLoading = false;
     }
 }
