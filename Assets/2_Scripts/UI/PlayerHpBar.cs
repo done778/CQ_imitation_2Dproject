@@ -7,7 +7,7 @@ public class PlayerHpBar : MonoBehaviour
     [SerializeField] private Image playerHpBar;
     [SerializeField] private TextMeshProUGUI hpText;
 
-    private void Start()
+    private void Awake()
     {
         BattleManager.Instance.changePlayerHp += PlayerHpUpdate;
     }

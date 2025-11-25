@@ -82,7 +82,7 @@ public class SkillBlockController : MonoBehaviour
         }
     }
 
-    // 블록 체인 검사
+    // 체인 검사
     public void CheckBlocksChain()
     {
         int numChain = 1; // 최대 3체인까지 체크를 위한 변수

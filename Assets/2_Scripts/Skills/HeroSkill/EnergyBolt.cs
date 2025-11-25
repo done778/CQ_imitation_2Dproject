@@ -20,7 +20,7 @@ public class EnergyBolt : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("에너지볼트 충돌 확인");
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Boss"))
+        if (collision.CompareTag("Enemy"))
         {
             Debug.Log("에너지볼트 적과 충돌 확인");
             BattleManager.Instance.SkillAttackInteraction(
