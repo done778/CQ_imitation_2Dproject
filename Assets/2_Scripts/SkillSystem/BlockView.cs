@@ -29,31 +29,33 @@ public class BlockView : MonoBehaviour
 
     public void UpdateBlockUI()
     {
-        for (int i = 0; i < blockBox.Length; i++) 
-        {
-            blockType = blockModel.blocks[i].type;
+        int index = 0;
 
-            if (blockType == BlockType.Empty)
-            {
-                blockBox[i].transform.GetChild(0).gameObject.SetActive(false);
-                blockBox[i].SetActive(false);
-                continue;
-            }
+        foreach (var block in blockModel.blocksLL)
+        {
+            blockType = block.type;
 
             switch (blockType)
             {
                 case BlockType.Blue:
-                    SetColor(blockBox[i], blueBlock, blockModel.blocks[i].isChained);
+                    SetColor(blockBox[index], blueBlock, block.isChained);
                     break;
                 case BlockType.Red:
-                    SetColor(blockBox[i], redBlock, blockModel.blocks[i].isChained);
+                    SetColor(blockBox[index], redBlock, block.isChained);
                     break;
                 case BlockType.Green:
-                    SetColor(blockBox[i], greenBlock, blockModel.blocks[i].isChained);
+                    SetColor(blockBox[index], greenBlock, block.isChained);
                     break;
                 default:
                     break;
             }
+            index++;
+        }
+
+        for (int i = index; i < blockBox.Length; i++) 
+        {
+            blockBox[i].transform.GetChild(0).gameObject.SetActive(false);
+            blockBox[i].SetActive(false);
         }
     }
 

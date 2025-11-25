@@ -7,7 +7,8 @@ public class BlockController : MonoBehaviour
 {
     [SerializeField] private BlockView blockView;
     BlockModel blockModel;
-    
+    Button[] childrenArr;
+
     WaitForSeconds delay;
     Coroutine createBlocks;
 
@@ -18,7 +19,7 @@ public class BlockController : MonoBehaviour
 
     private void Start()
     {
-        Button[] childrenArr = GetComponentsInChildren<Button>();
+        childrenArr = GetComponentsInChildren<Button>();
         blockModel.Init(childrenArr.Length);
         blockView.Init(blockModel, childrenArr);
         createBlocks = StartCoroutine(CreateBlock());
