@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Hero_1 : BaseHero
+public class Green : BaseHero
 {
     [SerializeField] private GameObject SkillEffect;
     GameObject curSkill;

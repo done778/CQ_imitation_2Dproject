@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Hero_3 : BaseHero
+public class Pink : BaseHero
 {
     public override void SkillLogic(int chain)
     {

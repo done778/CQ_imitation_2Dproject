@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
-  m_Name: Hero1Status
+  m_Name: OrangeStatus
   m_EditorClassIdentifier: 
-  HealthPoint: 80
-  AttackPower: 16
-  AttackRange: 1.5
+  HealthPoint: 50
+  AttackPower: 30
+  AttackRange: 6
   AttackSpeed: 1.2

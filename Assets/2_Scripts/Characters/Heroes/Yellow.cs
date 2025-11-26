@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Hero_2 : BaseHero
+public class Yellow : BaseHero
 {
     [SerializeField] private GameObject SkillEffect;
     GameObject curSkill;
