@@ -46,9 +46,10 @@ public class BattleManager : SingletonePattern <BattleManager>
     }
 
     // 영웅 엔트리 설정 메서드
-    public void SetHeroEntry()
+    // 매개변수 : 어느 자리에(index), 누구를 넣을 것인가? 가 관건
+    public void SetHeroEntry(int index, BaseHero hero)
     {
-
+        heroEntry[index] = hero;
     }
 
     public void CastingSkill(SkillBlock block)
