@@ -5,10 +5,13 @@ public class GameManager : SingletonePattern<GameManager>
 {
     bool isLoading;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         Application.targetFrameRate = 60;
     }
+
+    // 씬 전환
     public void LoadScene(string sceneName)
     {
         if (isLoading) return;
@@ -16,4 +19,17 @@ public class GameManager : SingletonePattern<GameManager>
         SceneManager.LoadScene(sceneName);
         isLoading = false;
     }
+
+    // 게임 일시 정지
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
+
+    // 게임 재개
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+
 }

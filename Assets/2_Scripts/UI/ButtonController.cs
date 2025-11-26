@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ButtonController : MonoBehaviour
 {
@@ -15,6 +13,19 @@ public class ButtonController : MonoBehaviour
     public void LoadStageScene()
     {
         GameManager.Instance.LoadScene("Stage");
+        GameManager.Instance.ResumeGame();
+    }
+    public void OpenCharSelectPanel()
+    {
+        UIManager.Instance.SetCharSelectPanel(true);
+    }
+    public void OpenPausePanel()
+    {
+        UIManager.Instance.SetPausePanel(true);
+    }
+    public void ContinueButton()
+    {
+        UIManager.Instance.SetPausePanel(false);
     }
     public void ExitButton()
     {

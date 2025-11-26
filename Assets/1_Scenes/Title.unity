@@ -297,15 +297,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Chrono Quest
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fbb7849604e24d748be350ca856e5213, type: 2}
-  m_sharedMaterial: {fileID: 3934323724868406717, guid: fbb7849604e24d748be350ca856e5213, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 710dd7a357b239a458e2c3a621626dc7, type: 2}
+  m_sharedMaterial: {fileID: -3512204006601151104, guid: 710dd7a357b239a458e2c3a621626dc7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293142299
-  m_fontColor: {r: 0.106308244, g: 0.15477298, b: 0.89433956, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -536,8 +536,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: EXIT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fbb7849604e24d748be350ca856e5213, type: 2}
-  m_sharedMaterial: {fileID: 3934323724868406717, guid: fbb7849604e24d748be350ca856e5213, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 710dd7a357b239a458e2c3a621626dc7, type: 2}
+  m_sharedMaterial: {fileID: -3512204006601151104, guid: 710dd7a357b239a458e2c3a621626dc7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1072,8 +1072,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Game Start
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fbb7849604e24d748be350ca856e5213, type: 2}
-  m_sharedMaterial: {fileID: 3934323724868406717, guid: fbb7849604e24d748be350ca856e5213, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 710dd7a357b239a458e2c3a621626dc7, type: 2}
+  m_sharedMaterial: {fileID: -3512204006601151104, guid: 710dd7a357b239a458e2c3a621626dc7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
