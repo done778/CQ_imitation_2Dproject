@@ -5,7 +5,7 @@ public class StateMoveForward : ICharacterState
 {
     BaseCharacter character;
     Coroutine routine;
-    [SerializeField] float moveSpeed = 3f;
+    [SerializeField] float moveSpeed = 1.8f;
 
     public StateMoveForward(BaseCharacter controller)
     {

@@ -51,6 +51,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   targetCombat: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!70 &2676051207248531581
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -181,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 7984224534461014372}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c31759529195ddc4f9fa33c1246cdc9a, type: 2}
+  m_Controller: {fileID: 22100000, guid: 1d786aa27c4651e4086564fbe2f3ce76, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

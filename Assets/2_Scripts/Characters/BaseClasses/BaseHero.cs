@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 // 베이스 영웅(플레이어 진영) 클래스. 초기 상태와 적 감지를 공통으로 가짐.
 // 영웅 스킬은 이 클래스를 상속받는 각각의 영웅 클래스에서 구현
@@ -8,10 +9,13 @@ public abstract class BaseHero : BaseCharacter, IUsableSkill
     protected Queue<int> SkillQueue;
     private bool isCasting = false;
     public Dictionary<int, float> chainBonus;
+    public Animator animator;
 
     void Awake()
     {
         Init();
+        animator = transform.GetComponentInChildren<Animator>();
+
         SkillQueue = new Queue<int>();
         chainBonus = new Dictionary<int, float>();
 

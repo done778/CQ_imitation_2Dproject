@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 3440588721397116795}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0f1ad499667de6e40856097e5a6cb385, type: 2}
+  m_Controller: {fileID: 22100000, guid: 21b22ad514a5f6f42a37eddc5fbb7ead, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -157,6 +157,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   targetCombat: {fileID: 0}
+  animator: {fileID: 0}
   SkillEffect: {fileID: 8174406090317030047, guid: cc76bf37087c9cb47ac741c7e3bddcb9, type: 3}
 --- !u!70 &6181795774025525707
 CapsuleCollider2D:
