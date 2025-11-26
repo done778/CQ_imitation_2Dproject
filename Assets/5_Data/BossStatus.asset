@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
   m_Name: BossStatus
   m_EditorClassIdentifier: 
+  uniqueId: 201
+  prefab: {fileID: 0}
   HealthPoint: 200
   AttackPower: 20
   AttackRange: 2

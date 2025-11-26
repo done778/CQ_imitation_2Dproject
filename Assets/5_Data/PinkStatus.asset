@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
   m_Name: PinkStatus
   m_EditorClassIdentifier: 
+  uniqueId: 5
+  prefab: {fileID: 7894760947730888274, guid: cca22e199a7b7264596d9419f448d9b9, type: 3}
   HealthPoint: 40
   AttackPower: 15
-  AttackRange: 6
+  AttackRange: 3
   AttackSpeed: 1.2

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
   m_Name: OrangeStatus
   m_EditorClassIdentifier: 
+  uniqueId: 3
+  prefab: {fileID: 4073491759564882340, guid: e3a607b8c5d94914ab03942c1a00a2c8, type: 3}
   HealthPoint: 50
   AttackPower: 30
-  AttackRange: 6
+  AttackRange: 2.5
   AttackSpeed: 1.2

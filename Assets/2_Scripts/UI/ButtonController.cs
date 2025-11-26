@@ -12,8 +12,15 @@ public class ButtonController : MonoBehaviour
     }
     public void LoadStageScene()
     {
-        GameManager.Instance.LoadScene("Stage");
-        GameManager.Instance.ResumeGame();
+        if (CheckHeroEntry())
+        {
+            GameManager.Instance.LoadScene("Stage");
+            GameManager.Instance.ResumeGame();
+        }
+        else
+        {
+            UIManager.Instance.PopUpSetHeroWarningMessage();
+        }
     }
     public void OpenCharSelectPanel()
     {
@@ -26,6 +33,17 @@ public class ButtonController : MonoBehaviour
     public void ContinueButton()
     {
         UIManager.Instance.SetPausePanel(false);
+    }
+    public bool CheckHeroEntry()
+    {
+        var getInfo = BattleManager.Instance.GetHeroEntry();
+        foreach (var id in getInfo) {
+            if (id == null)
+            {
+                return false;
+            }
+        }
+        return true;
     }
     public void ExitButton()
     {

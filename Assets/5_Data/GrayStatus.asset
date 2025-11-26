@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
   m_Name: GrayStatus
   m_EditorClassIdentifier: 
+  uniqueId: 2
+  prefab: {fileID: 4622532668011481018, guid: 31c55938fd233614aa2daa3f50b26dcd, type: 3}
   HealthPoint: 90
   AttackPower: 25
-  AttackRange: 2
+  AttackRange: 1.4
   AttackSpeed: 1.2

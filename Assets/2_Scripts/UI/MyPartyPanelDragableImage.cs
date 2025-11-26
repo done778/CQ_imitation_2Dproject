@@ -26,9 +26,12 @@ using UnityEngine.EventSystems;
 
 public class MyPartyPanelDragableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public Transform originParent;
+    [HideInInspector] public Transform originParent;
     private Image image;
     private CanvasGroup canvasGroup;
+    [SerializeField] private CharacterBaseStatus heroInfo;
+
+    public CharacterBaseStatus HeroInfo => heroInfo;
 
     private void Awake()
     {

@@ -37,6 +37,11 @@ public class UIManager : SingletonePattern <UIManager>
             GameManager.Instance.ResumeGame();
     }
 
+    public void PopUpSetHeroWarningMessage()
+    {
+        charSelectPanel.GetComponent<CharSelectPanel>().PopUpWarningMessage();
+    }
+
     private void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
         if (scene.name.Contains("Stage"))
