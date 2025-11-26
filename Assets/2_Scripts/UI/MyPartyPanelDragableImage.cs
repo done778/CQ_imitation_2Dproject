@@ -27,7 +27,7 @@ using UnityEngine.EventSystems;
 public class MyPartyPanelDragableImage : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [HideInInspector] public Transform originParent;
-    private Image image;
+    [HideInInspector] public Transform curParent;
     private CanvasGroup canvasGroup;
     [SerializeField] private CharacterBaseStatus heroInfo;
 
@@ -36,7 +36,7 @@ public class MyPartyPanelDragableImage : MonoBehaviour, IBeginDragHandler, IDrag
     private void Awake()
     {
         originParent = transform.parent;
-        image = GetComponent<Image>();
+        curParent = originParent;
         canvasGroup = gameObject.AddComponent<CanvasGroup>();
     }
 
@@ -61,6 +61,11 @@ public class MyPartyPanelDragableImage : MonoBehaviour, IBeginDragHandler, IDrag
         {
             transform.SetParent(originParent);
             transform.localPosition = Vector3.zero;
+            if (curParent != originParent)
+            {
+                BattleManager.Instance.SetHeroEntry(curParent.gameObject.GetComponent<DropZone>().PositionIndex, null);
+                curParent = originParent;
+            }
         }
     }
 }

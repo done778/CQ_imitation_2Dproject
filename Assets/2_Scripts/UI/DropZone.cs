@@ -1,10 +1,11 @@
-﻿using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class DropZone : MonoBehaviour, IDropHandler
 {
     [SerializeField] private int positionIndex;
+
+    public int PositionIndex => positionIndex;
 
     public void OnDrop(PointerEventData eventData)
     {
@@ -24,6 +25,7 @@ public class DropZone : MonoBehaviour, IDropHandler
             var curHero = eventData.pointerDrag.gameObject.GetComponent<MyPartyPanelDragableImage>();
             if (curHero != null)
             {
+                curHero.curParent = transform;
                 BattleManager.Instance.SetHeroEntry(positionIndex, curHero.HeroInfo);
             }
             else
