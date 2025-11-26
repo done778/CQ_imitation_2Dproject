@@ -14,13 +14,14 @@ public abstract class BaseCharacter : MonoBehaviour
     private ICharacterState curState;
     [SerializeField] public LayerMask layerMask;
     [HideInInspector] public Collider2D targetCombat;
-    private BattleManager battleManager;
+    public Animator anim;
 
     public int CurHealthPoint { get; set; }
 
     public void Init()
     {
         CurHealthPoint = status.HealthPoint;
+        anim = transform.GetComponentInChildren<Animator>();
     }
 
     public void SetState(ICharacterState changeState)
@@ -64,7 +65,7 @@ public abstract class BaseCharacter : MonoBehaviour
     }
 
     // 사망 로직
-    public void Died()
+    public virtual void Died()
     {
         Destroy(gameObject);
     }

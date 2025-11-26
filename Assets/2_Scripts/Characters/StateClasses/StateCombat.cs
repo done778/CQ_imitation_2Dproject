@@ -14,11 +14,13 @@ public class StateCombat : ICharacterState
     }
     public void OnEnter()
     {
+        character.anim?.SetBool("isCombat", true);
         routine = character.StartCrt(OnUpdate());
     }
 
     public void OnExit()
     {
+        character.anim?.SetBool("isCombat", false);
         character.EndCrt(routine);
     }
 

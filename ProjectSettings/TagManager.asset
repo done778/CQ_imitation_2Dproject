@@ -48,3 +48,6 @@ TagManager:
   - name: Character
     uniqueID: 1645607541
     locked: 0
+  - name: SkillEffect
+    uniqueID: 3229050143
+    locked: 0

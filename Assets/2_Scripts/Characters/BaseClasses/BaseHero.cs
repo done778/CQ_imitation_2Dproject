@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 // 베이스 영웅(플레이어 진영) 클래스. 초기 상태와 적 감지를 공통으로 가짐.
@@ -9,12 +10,11 @@ public abstract class BaseHero : BaseCharacter, IUsableSkill
     protected Queue<int> SkillQueue;
     private bool isCasting = false;
     public Dictionary<int, float> chainBonus;
-    public Animator animator;
+    Coroutine died;
 
     void Awake()
     {
         Init();
-        animator = transform.GetComponentInChildren<Animator>();
 
         SkillQueue = new Queue<int>();
         chainBonus = new Dictionary<int, float>();
@@ -28,6 +28,23 @@ public abstract class BaseHero : BaseCharacter, IUsableSkill
         stateSkillCasting = new StateSkillCasting(this);
         SetState(stateMoveForward);
     }
+
+    public override void Died()
+    {
+        died = StartCoroutine(DiedAnim());
+    }
+    private IEnumerator DiedAnim()
+    {
+        anim.SetTrigger("isDied");
+        yield return new WaitForSeconds(0.8f);
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        StopCoroutine(died);
+    }
+
     public void RegistSkillQueue(int chain)
     {
         SkillQueue.Enqueue(chain);

@@ -19,10 +19,12 @@ public class StateSkillCasting : ICharacterState
         if (character is IUsableSkill) {
             caster = (character as IUsableSkill).GetClass();
         }
+        character.anim?.SetBool("isCasting", true);
         routine = character.StartCrt(OnUpdate());
     }
     public void OnExit()
     {
+        character.anim?.SetBool("isCasting", false);
         character.EndCrt(routine);
     }
     public IEnumerator OnUpdate()

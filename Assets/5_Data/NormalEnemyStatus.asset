@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
-  m_Name: Enemy1Status
+  m_Name: NormalEnemyStatus
   m_EditorClassIdentifier: 
   uniqueId: 101
-  prefab: {fileID: 0}
+  prefab: {fileID: 4474448555967486674, guid: 96de45e1b772a144c9b87e976a383599, type: 3}
   HealthPoint: 100
   AttackPower: 30
   AttackRange: 2

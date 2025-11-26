@@ -14,11 +14,13 @@ public class StateMoveForward : ICharacterState
 
     public void OnEnter()
     {
+        character.anim?.SetBool("isWalk", true);
         routine = character.StartCrt(OnUpdate());
     }
 
     public void OnExit()
     {
+        character.anim?.SetBool("isWalk", false);
         character.EndCrt(routine);
     }
 
