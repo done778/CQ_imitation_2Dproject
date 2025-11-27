@@ -68,15 +68,6 @@ public abstract class BaseBoss : EnemyController, IUsableSkill
 
     public override void Died()
     {
-        StartCoroutine(DiedAnim());
-    }
-
-    protected override IEnumerator DiedAnim()
-    {
-        anim.SetTrigger("isDied");
-        yield return new WaitForSeconds(0.8f);
-
-        // 배틀매니저한테 죽었다고 알리기.
         BattleManager.Instance.BossDied();
     }
 
