@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BlockController : MonoBehaviour
 {
     [SerializeField] private BlockView blockView;
+    [SerializeField] private float intervalCreateBlock;
     BlockModel blockModel;
     Button[] childrenArr;
 
@@ -33,7 +34,7 @@ public class BlockController : MonoBehaviour
     void Init()
     {
         blockModel = new BlockModel();
-        delay = new WaitForSeconds(1.2f);
+        delay = new WaitForSeconds(intervalCreateBlock);
     }
 
     public IEnumerator CreateBlock()

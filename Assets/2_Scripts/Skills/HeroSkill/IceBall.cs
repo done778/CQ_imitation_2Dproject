@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class IceBall : MonoBehaviour, IEffectSkill
@@ -7,11 +6,12 @@ public class IceBall : MonoBehaviour, IEffectSkill
     int power;
     int count;
     float moveSpeed = 10;
+    Coroutine remainSkill;
     public void Init(int amount)
     {
         power = amount;
         count = 0;
-        Destroy(gameObject, 1f);
+        remainSkill = StartCoroutine(RemainSkillObj());
     }
 
     private void Update()
@@ -29,7 +29,20 @@ public class IceBall : MonoBehaviour, IEffectSkill
                 );
             count++;
             if (count > 1)
-                Destroy(gameObject);
+                gameObject.SetActive(false);
         }
+    }
+    private void OnDisable()
+    {
+        if (remainSkill != null)
+        {
+            StopCoroutine(remainSkill);
+            remainSkill = null;
+        }
+    }
+    private IEnumerator RemainSkillObj()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
 }

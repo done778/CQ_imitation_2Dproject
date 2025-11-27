@@ -1,15 +1,15 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnergyBall : MonoBehaviour, IEffectSkill
 {
     int power;
     float moveSpeed = 10;
+    Coroutine remainSkill;
     public void Init(int amount)
     {
         power = amount;
-        Destroy(gameObject, 1f);
+        remainSkill = StartCoroutine(RemainSkillObj());
     }
 
     private void Update()
@@ -25,7 +25,20 @@ public class EnergyBall : MonoBehaviour, IEffectSkill
                 collision.gameObject.GetComponent<BaseCharacter>(),
                 power
                 );
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
+    }
+    private void OnDisable()
+    {
+        if (remainSkill != null)
+        {
+            StopCoroutine(remainSkill);
+            remainSkill = null;
+        }
+    }
+    private IEnumerator RemainSkillObj()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
 }

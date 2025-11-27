@@ -75,7 +75,8 @@ public abstract class BaseBoss : EnemyController, IUsableSkill
     {
         anim.SetTrigger("isDied");
         yield return new WaitForSeconds(0.8f);
-        // 죽을 때 파괴되지 말고 일단 배틀매니저한테 나 죽었다고 알리기.
+
+        // 배틀매니저한테 죽었다고 알리기.
         BattleManager.Instance.BossDied();
     }
 

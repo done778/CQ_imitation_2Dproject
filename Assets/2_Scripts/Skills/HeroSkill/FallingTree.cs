@@ -1,16 +1,18 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class FallingTree : MonoBehaviour, IEffectSkill
 {
     int power;
     bool firstTarget;
     float groundedPos;
+    Coroutine remainSkill;
     public void Init(int amount)
     {
         power = amount;
-        Destroy(gameObject, 1.5f);
         firstTarget = true;
         groundedPos = 0.6f;
+        remainSkill = StartCoroutine(RemainSkillObj());
     }
 
     private void FixedUpdate()
@@ -36,5 +38,19 @@ public class FallingTree : MonoBehaviour, IEffectSkill
                 firstTarget = false;
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        if (remainSkill != null)
+        {
+            StopCoroutine(remainSkill);
+            remainSkill = null;
+        }
+    }
+    private IEnumerator RemainSkillObj()
+    {
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
 }

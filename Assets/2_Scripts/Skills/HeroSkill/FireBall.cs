@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class FireBall : MonoBehaviour, IEffectSkill
 {
     int power;
     float moveSpeed = 10;
+    Coroutine remainSkill;
     public void Init(int amount)
     {
         power = amount;
-        Destroy(gameObject, 1f);
+        remainSkill = StartCoroutine(RemainSkillObj());
     }
 
     private void Update()
@@ -24,5 +26,18 @@ public class FireBall : MonoBehaviour, IEffectSkill
                 power
                 );
         }
+    }
+    private void OnDisable()
+    {
+        if (remainSkill != null)
+        {
+            StopCoroutine(remainSkill);
+            remainSkill = null;
+        }
+    }
+    private IEnumerator RemainSkillObj()
+    {
+        yield return new WaitForSeconds(0.8f);
+        gameObject.SetActive(false);
     }
 }

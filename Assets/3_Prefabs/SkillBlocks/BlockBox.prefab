@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockView: {fileID: 0}
+  intervalCreateBlock: 0.8
 --- !u!1001 &362205191228686031
 PrefabInstance:
   m_ObjectHideFlags: 0

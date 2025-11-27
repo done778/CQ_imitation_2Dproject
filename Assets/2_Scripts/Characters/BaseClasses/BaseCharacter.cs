@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 // 베이스 캐릭터 클래스. 아군, 적 모두가 상속 받음.
