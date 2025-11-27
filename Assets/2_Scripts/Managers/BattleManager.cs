@@ -131,6 +131,7 @@ public class BattleManager : SingletonePattern <BattleManager>
         {
             curPartyHealthPoint -= Attacker.status.AttackPower;
             changePlayerHp?.Invoke(curPartyHealthPoint, maxPartyHealthPoint);
+            AudioManager.Instance.PlayHeroHitSound();
         }
         else
         {

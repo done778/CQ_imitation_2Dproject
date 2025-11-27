@@ -1,12 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AudioManager : SingletonePattern <AudioManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    private AudioSource sfxSource;
+
+    public AudioClip heroHitSoundEffect;
+    public AudioClip enemyHitSoundEffect;
+    private void Start()
     {
-        
+        sfxSource = GetComponent<AudioSource>();
+    }
+
+    public void PlayHeroHitSound()
+    {
+        sfxSource.PlayOneShot(heroHitSoundEffect);
+    }
+    public void PlayEnemyHitSound()
+    {
+        sfxSource.PlayOneShot(enemyHitSoundEffect);
     }
 }
