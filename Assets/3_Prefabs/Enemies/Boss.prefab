@@ -232,7 +232,7 @@ MonoBehaviour:
   targetCombat: {fileID: 0}
   anim: {fileID: 0}
   enemyHpBar: {fileID: 2844182754683787610}
-  SkillEffect: {fileID: 2788827784876897488, guid: ee8f20a6c1453a04c9633ee8d0b9a308, type: 3}
+  SkillEffect: {fileID: 11400000, guid: 2ebd9083a39f34d49ad1bb7e502e7431, type: 2}
 --- !u!61 &8038599918428788692
 BoxCollider2D:
   m_ObjectHideFlags: 0
