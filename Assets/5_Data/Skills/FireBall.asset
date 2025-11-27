@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
-  m_Name: PinkStatus
+  m_Script: {fileID: 11500000, guid: c8cf9212ba8fc7e43b60fb981d1e380c, type: 3}
+  m_Name: FireBall
   m_EditorClassIdentifier: 
-  uniqueId: 5
-  prefab: {fileID: 7894760947730888274, guid: cca22e199a7b7264596d9419f448d9b9, type: 3}
-  HealthPoint: 40
-  AttackPower: 15
-  AttackRange: 3
-  AttackSpeed: 1.2
+  skillBasePower: 0.8
+  skillPrefab: {fileID: 2473799963071105257, guid: 26be27f2e7331b948b7259beb748f176, type: 3}

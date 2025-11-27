@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 // 베이스 보스(적 진영) 클래스.
 // 보스의 특수 공격은 각각의 보스 클래스에 구현.
@@ -14,7 +16,6 @@ public abstract class BaseBoss : EnemyController, IUsableSkill
 
     protected override void Awake()
     {
-        Init();
         SkillQueue = new Queue<int>();
         stateMoveForward = new StateMoveForward(this);
         stateCombat = new StateCombat(this);
@@ -22,7 +23,11 @@ public abstract class BaseBoss : EnemyController, IUsableSkill
         firstCasting = true;
         secondCasting = true;
         thirdCasting = true;
+    }
 
+    protected override void OnEnable()
+    {
+        Init();
         SetState(stateMoveForward);
     }
 
@@ -56,6 +61,19 @@ public abstract class BaseBoss : EnemyController, IUsableSkill
             Died();
         }
         EnemyHpUpdate(CurHealthPoint, status.HealthPoint);
+    }
+
+    public override void Died()
+    {
+        StartCoroutine(DiedAnim());
+    }
+
+    protected override IEnumerator DiedAnim()
+    {
+        anim.SetTrigger("isDied");
+        yield return new WaitForSeconds(0.8f);
+        // 죽을 때 파괴되지 말고 일단 배틀매니저한테 나 죽었다고 알리기.
+        BattleManager.Instance.BossDied();
     }
 
     public void RegistSkillQueue(int chain)

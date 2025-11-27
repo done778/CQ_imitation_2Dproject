@@ -25,7 +25,6 @@ public class StateSkillCasting : ICharacterState
     public void OnExit()
     {
         character.anim?.SetBool("isCasting", false);
-        character.EndCrt(routine);
     }
     public IEnumerator OnUpdate()
     {

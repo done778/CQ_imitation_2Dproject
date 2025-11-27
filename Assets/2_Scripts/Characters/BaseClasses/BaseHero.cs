@@ -10,7 +10,6 @@ public abstract class BaseHero : BaseCharacter, IUsableSkill
     protected Queue<int> SkillQueue;
     private bool isCasting = false;
     public Dictionary<int, float> chainBonus;
-    Coroutine died;
 
     void Awake()
     {
@@ -31,18 +30,18 @@ public abstract class BaseHero : BaseCharacter, IUsableSkill
 
     public override void Died()
     {
-        died = StartCoroutine(DiedAnim());
+        StartCoroutine(DiedAnim());
     }
-    private IEnumerator DiedAnim()
+    protected override IEnumerator DiedAnim()
     {
         anim.SetTrigger("isDied");
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
         Destroy(gameObject);
     }
 
     private void OnDestroy()
     {
-        StopCoroutine(died);
+        StopAllCoroutines();
     }
 
     public void RegistSkillQueue(int chain)

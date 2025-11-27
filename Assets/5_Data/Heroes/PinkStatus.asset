@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
-  m_Name: YellowStatus
+  m_Name: PinkStatus
   m_EditorClassIdentifier: 
-  uniqueId: 4
-  prefab: {fileID: 289165429541697974, guid: e5569ce1d81d8b348b318337d50c6ef7, type: 3}
+  uniqueId: 5
+  prefab: {fileID: 7894760947730888274, guid: cca22e199a7b7264596d9419f448d9b9, type: 3}
   HealthPoint: 70
-  AttackPower: 25
-  AttackRange: 2
-  AttackSpeed: 1.2
+  AttackPower: 15
+  AttackRange: 3
+  AttackSpeed: 0.8

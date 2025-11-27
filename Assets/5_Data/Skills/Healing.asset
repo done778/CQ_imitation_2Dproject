@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
-  m_Name: BossStatus
+  m_Script: {fileID: 11500000, guid: c8cf9212ba8fc7e43b60fb981d1e380c, type: 3}
+  m_Name: Healing
   m_EditorClassIdentifier: 
-  uniqueId: 201
-  prefab: {fileID: 0}
-  HealthPoint: 200
-  AttackPower: 20
-  AttackRange: 2
-  AttackSpeed: 1.2
+  skillBasePower: 30
+  skillPrefab: {fileID: 1700797770739016065, guid: 974ad4370588cec42981f469ba607730, type: 3}

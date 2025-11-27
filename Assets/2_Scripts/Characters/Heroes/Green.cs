@@ -1,20 +1,17 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Green : BaseHero
 {
-    [SerializeField] private GameObject SkillEffect;
+    [SerializeField] private SkillDataSO SkillEffect;
     GameObject curSkill;
-
-    float skillPower = 1.5f;
 
     public override void SkillLogic(int chain)
     {
-        curSkill = Instantiate(SkillEffect);
-        curSkill.GetComponent<VerticalSword>().Init((int)(status.AttackPower * skillPower * chainBonus[chain]));
+        curSkill = Instantiate(SkillEffect.SkillPrefab);
+        curSkill.GetComponent<IEffectSkill>().Init((int)(status.AttackPower * SkillEffect.SkillBasePower * chainBonus[chain]));
         Vector3 temp = transform.position;
-        temp.x += 3f;
-        temp.y += 9f;
+        temp.x += 1.5f;
+        temp.y += 7f;
         curSkill.transform.position = temp;
     }
 }

@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyBolt : MonoBehaviour
+public class IceBall : MonoBehaviour, IEffectSkill
 {
     int power;
+    int count;
     float moveSpeed = 10;
     public void Init(int amount)
     {
         power = amount;
-        Destroy(gameObject, 2f);
+        count = 0;
+        Destroy(gameObject, 1f);
     }
 
     private void Update()
@@ -19,14 +21,15 @@ public class EnergyBolt : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("에너지볼트 충돌 확인");
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log("에너지볼트 적과 충돌 확인");
             BattleManager.Instance.SkillAttackInteraction(
                 collision.gameObject.GetComponent<BaseCharacter>(),
                 power
                 );
+            count++;
+            if (count > 1)
+                Destroy(gameObject);
         }
     }
 }

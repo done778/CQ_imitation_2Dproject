@@ -12,12 +12,16 @@ public class EnemyController : BaseCharacter
     [SerializeField] private Image enemyHpBar;
     protected virtual void Awake()
     {
-        Init();
         stateIdle = new StateIdle(this);
         stateMoveForward = new StateMoveForward(this);
         stateCombat = new StateCombat(this);
         stateSkillCasting = new StateSkillCasting(this);
+    }
 
+    protected virtual void OnEnable()
+    {
+        Init();
+        EnemyHpUpdate(CurHealthPoint, status.HealthPoint);
         SetState(stateIdle);
     }
 
@@ -25,11 +29,11 @@ public class EnemyController : BaseCharacter
     public virtual void TakeDamage(int damage)
     {
         CurHealthPoint -= damage;
+        EnemyHpUpdate(CurHealthPoint, status.HealthPoint);
         if (CurHealthPoint <= 0)
         {
             Died();
         }
-        EnemyHpUpdate(CurHealthPoint, status.HealthPoint);
     }
 
     protected void EnemyHpUpdate(int cur, int max)

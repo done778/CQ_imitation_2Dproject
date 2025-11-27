@@ -38,7 +38,8 @@ public abstract class BaseCharacter : MonoBehaviour
 
     public void EndCrt(Coroutine routine)
     {
-        StopCoroutine(routine);
+        if (routine != null)
+            StopCoroutine(routine);
     }
 
     // 자신의 적을 탐지하는 로직 (적은 아군을, 아군은 적을)
@@ -67,6 +68,14 @@ public abstract class BaseCharacter : MonoBehaviour
     // 사망 로직
     public virtual void Died()
     {
-        Destroy(gameObject);
+        StartCoroutine(DiedAnim());
+    }
+
+    protected virtual IEnumerator DiedAnim()
+    {
+        anim.SetTrigger("isDied");
+        yield return new WaitForSeconds(0.8f);
+        // 죽을 때 파괴되지 말고 일단 배틀매니저한테 나 죽었다고 알리기.
+        BattleManager.Instance.NormalEnemyDied(gameObject);
     }
 }

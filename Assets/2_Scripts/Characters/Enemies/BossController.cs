@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BossController : BaseBoss
 {
-    [SerializeField] private GameObject SkillEffect;
+    [SerializeField] private SkillDataSO SkillEffect;
     GameObject curSkill;
 
-    float skillPower = 0.8f;
     WaitForSeconds delay;
 
     void Start()
@@ -24,8 +23,8 @@ public class BossController : BaseBoss
     {
         for (int i = 0; i < chain; i++)
         {
-            curSkill = Instantiate(SkillEffect);
-            curSkill.GetComponent<FallingRock>().Init((int)(status.AttackPower * skillPower));
+            curSkill = Instantiate(SkillEffect.SkillPrefab);
+            curSkill.GetComponent<FallingRock>().Init((int)(status.AttackPower * SkillEffect.SkillBasePower));
             Vector3 temp = new Vector3();
             if (targetCombat != null)
                 temp = targetCombat.transform.position;

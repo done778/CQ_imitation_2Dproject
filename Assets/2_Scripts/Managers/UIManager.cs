@@ -5,6 +5,8 @@ public class UIManager : SingletonePattern <UIManager>
 {
     private GameObject charSelectPanel;
     private GameObject pausePanel;
+    private GameObject stageClearPanel;
+    private GameObject gameOverPanel;
     
     protected override void Awake()
     {
@@ -17,24 +19,38 @@ public class UIManager : SingletonePattern <UIManager>
     }
     public void GameStart()
     {
+        pausePanel = GameObject.Find("PausePanel");
+        stageClearPanel = GameObject.Find("StageClearPanel");
+        gameOverPanel = GameObject.Find("GameOverPanel");
         pausePanel?.SetActive(false);
+        stageClearPanel?.SetActive(false);
+        gameOverPanel?.SetActive(false);
     }
 
     public void RegistCharSelectPanel(GameObject controller) {
         charSelectPanel = controller;
     }
-    public void RegistPausePanel(GameObject controller) {
-        pausePanel = controller;
-    }
+
     public void SetCharSelectPanel(bool isActive) {
         charSelectPanel.SetActive(isActive);
     }
-    public void SetPausePanel(bool isActive) {
+    public void SetPausePanel(bool isActive) 
+    {
         pausePanel.SetActive(isActive);
         if (isActive)
             GameManager.Instance.PauseGame();
         else
             GameManager.Instance.ResumeGame();
+    }
+
+    public void SetStageClearPanel(bool isActive)
+    {
+        stageClearPanel.SetActive(isActive);
+    }
+
+    public void SetGameOverPanel(bool isActive)
+    {
+        gameOverPanel.SetActive(isActive);
     }
 
     public void PopUpSetHeroWarningMessage()

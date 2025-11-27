@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FallingRock : MonoBehaviour
+public class FallingRock : MonoBehaviour, IEffectSkill
 {
     int power;
     bool firstTarget;
@@ -27,10 +27,8 @@ public class FallingRock : MonoBehaviour
     {
         if (firstTarget)
         {
-            Debug.Log("폴링 락 충돌 확인");
             if (collision.CompareTag("Player"))
             {
-                Debug.Log("폴링 락 적과 충돌 확인");
                 BattleManager.Instance.SkillAttackInteraction(
                     collision.gameObject.GetComponent<BaseCharacter>(),
                     power

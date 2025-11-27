@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afafd3f500b19664db8ad5e241e1fe6f, type: 3}
-  m_Name: GrayStatus
+  m_Script: {fileID: 11500000, guid: c8cf9212ba8fc7e43b60fb981d1e380c, type: 3}
+  m_Name: FallingRock
   m_EditorClassIdentifier: 
-  uniqueId: 2
-  prefab: {fileID: 4622532668011481018, guid: 31c55938fd233614aa2daa3f50b26dcd, type: 3}
-  HealthPoint: 90
-  AttackPower: 25
-  AttackRange: 1.4
-  AttackSpeed: 1.2
+  skillBasePower: 0.8
+  skillPrefab: {fileID: 2788827784876897488, guid: ee8f20a6c1453a04c9633ee8d0b9a308, type: 3}

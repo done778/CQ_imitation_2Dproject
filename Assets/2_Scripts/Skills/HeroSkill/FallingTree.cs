@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class VerticalSword : MonoBehaviour
+public class FallingTree : MonoBehaviour, IEffectSkill
 {
     int power;
     bool firstTarget;

@@ -28,12 +28,18 @@ public class BattleManager : SingletonePattern <BattleManager>
     private int maxPartyHealthPoint;
     private int curPartyHealthPoint;
     private CameraController virtualCam;
+    private PoolManager poolManager;
+    private int enemyKillCount;
+    private int goalKillCount;
 
     public event Action<int, int> changePlayerHp;
+    public event Action<int, int> changeProgress;
 
     protected override void Awake()
     {
         base.Awake();
+        enemyKillCount = 0;
+        goalKillCount = 10;
         heroEntry = new BaseHero[3];
         entryHeroId = new CharacterBaseStatus[3]; // 스크립터블 오브젝트 안에 영웅 정보가 있음.
         SceneManager.sceneLoaded += OnSceneLoad;
@@ -52,9 +58,19 @@ public class BattleManager : SingletonePattern <BattleManager>
         return entryHeroId;
     }
 
+    private void InitHeroEntry()
+    {
+        for (int i = 0; i < heroEntry.Length; i++)
+        {
+            heroEntry[i] = null;
+            entryHeroId[i] = null;
+        }
+    }
+
     // 스테이지 씬 들어갔을 때 실행될 메서드
     private void GameStart()
     {
+        enemyKillCount = 0;
         // 정해진 위치에 영웅들 인스턴스화 하고 정보도 담음.
         string[] positionNames = { "FrontPosition", "MiddlePosition", "BackPosition" };
         for (int i = 0; i < entryHeroId.Length; i++)
@@ -74,6 +90,9 @@ public class BattleManager : SingletonePattern <BattleManager>
         }
         curPartyHealthPoint = maxPartyHealthPoint;
         changePlayerHp?.Invoke(curPartyHealthPoint, maxPartyHealthPoint);
+        changeProgress?.Invoke(enemyKillCount, goalKillCount);
+
+        poolManager.InitEnemySpawn();
     }
 
     public void CastingSkill(SkillBlock block)
@@ -109,13 +128,14 @@ public class BattleManager : SingletonePattern <BattleManager>
                 (target as EnemyController).TakeDamage(Attacker.status.AttackPower);
             }
         }
-        Debug.Log($"{Attacker.name}이(가) {target.name}을 공격!");
         if (curPartyHealthPoint <= 0) 
         {
             foreach (var hero in heroEntry)
             {
                 hero.Died();
             }
+            // 영웅이 죽으면 게임매니저에게 끝났다고 알림.
+            GameManager.Instance.FailedGame();
         }
     }
 
@@ -140,7 +160,39 @@ public class BattleManager : SingletonePattern <BattleManager>
         }
     }
 
+    // 일반 적이 죽으면 파괴가 아닌 비활성화를 시켜야한다.
+    // 하지만 비활성화해도 영웅들의 타겟에서는 사라지지 않는다.
+    // 그러므로 영웅들의 현재 타겟을 제거해줘서 다시 탐색하도록 한다.
+    public void NormalEnemyDied(GameObject enemy)
+    {
+        // 일단 비활성화, 하지만 타겟에선 사라지지 않음
+        enemy.SetActive(false);
+        foreach (var hero in heroEntry)
+        {
+            if(hero.targetCombat != null && hero.targetCombat.gameObject == enemy)
+            {
+                hero.targetCombat = null;
+            }
+        }
+        // 타겟에서 제거했으니 킬 카운트에 따라 풀 매니저에게 소환 명령
+        enemyKillCount++;
+        changeProgress?.Invoke(enemyKillCount, goalKillCount);
+        if (enemyKillCount >= goalKillCount)
+            poolManager.SpawnBoss(virtualCam.transform.position);
+        else
+            poolManager.SpawnNormalEnemy(virtualCam.transform.position);
+    }
 
+    public void BossDied()
+    {
+        poolManager.InActiveBoss();
+        GameManager.Instance.ClearGame();
+    }
+
+    public void RegistPoolManager(PoolManager manager)
+    {
+        poolManager = manager;
+    }
     public void RegistVirtualCamera(CameraController controller)
     {
         virtualCam = controller;
@@ -150,6 +202,10 @@ public class BattleManager : SingletonePattern <BattleManager>
         if (scene.name.Contains("Stage"))
         {
             GameStart();
+        }
+        if (scene.name == "Lobby")
+        {
+            InitHeroEntry();
         }
     }
 }

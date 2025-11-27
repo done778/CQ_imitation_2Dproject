@@ -51,7 +51,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   targetCombat: {fileID: 0}
-  animator: {fileID: 0}
+  anim: {fileID: 0}
+  SkillEffect: {fileID: 11400000, guid: 25e141617b46ecd4694ece29ed5e06bc, type: 2}
 --- !u!70 &2676051207248531581
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -32,4 +32,17 @@ public class GameManager : SingletonePattern<GameManager>
         Time.timeScale = 1f;
     }
 
+    // 스테이지 클리어 실패
+    public void FailedGame()
+    {
+        UIManager.Instance.SetGameOverPanel(true);
+        Time.timeScale = 0f;
+    }
+
+    // 스테이지 클리어 성공
+    public void ClearGame()
+    {
+        UIManager.Instance.SetStageClearPanel(true);
+        Time.timeScale = 0f;
+    }
 }

@@ -33,7 +33,7 @@ public class BlockController : MonoBehaviour
     void Init()
     {
         blockModel = new BlockModel();
-        delay = new WaitForSeconds(1.5f);
+        delay = new WaitForSeconds(1.2f);
     }
 
     public IEnumerator CreateBlock()
