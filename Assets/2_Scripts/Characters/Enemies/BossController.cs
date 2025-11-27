@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BossController : BaseBoss
 {
-    [SerializeField] private SkillDataSO SkillEffect;
     GameObject curSkill;
 
     WaitForSeconds delay;

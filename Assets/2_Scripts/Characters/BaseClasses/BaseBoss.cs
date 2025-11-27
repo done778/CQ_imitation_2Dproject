@@ -14,6 +14,9 @@ public abstract class BaseBoss : EnemyController, IUsableSkill
     private bool secondCasting;
     private bool thirdCasting;
 
+    [SerializeField] protected SkillDataSO SkillEffect;
+    public SkillDataSO SkillData => SkillEffect;
+
     protected override void Awake()
     {
         SkillQueue = new Queue<int>();

@@ -8,19 +8,17 @@ using UnityEngine;
 public abstract class BaseHero : BaseCharacter, IUsableSkill
 {
     protected Queue<int> SkillQueue;
-    private bool isCasting = false;
-    public Dictionary<int, float> chainBonus;
+    protected GameObject curSkill;
 
+    private bool isCasting = false;
+    
+    [SerializeField] protected SkillDataSO SkillEffect;
+    public SkillDataSO SkillData => SkillEffect;
     void Awake()
     {
         Init();
 
         SkillQueue = new Queue<int>();
-        chainBonus = new Dictionary<int, float>();
-
-        chainBonus[1] = 1f;
-        chainBonus[2] = 2.2f;
-        chainBonus[3] = 4.5f;
 
         stateMoveForward = new StateMoveForward(this);
         stateCombat = new StateCombat(this);
@@ -74,5 +72,9 @@ public abstract class BaseHero : BaseCharacter, IUsableSkill
         return isCasting;
     }
 
-    public abstract void SkillLogic(int chain);
+    public virtual void SkillLogic(int chain)
+    {
+        curSkill = BattleManager.Instance.RequestSkillObj(status.UniqueId);
+        curSkill.GetComponent<IEffectSkill>().Init((int)(status.AttackPower * SkillEffect.SkillBasePower * BattleManager.Instance.chainBonus[chain]));
+    }
 }

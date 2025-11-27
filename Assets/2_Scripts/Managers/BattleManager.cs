@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,13 +36,23 @@ public class BattleManager : SingletonePattern <BattleManager>
     public event Action<int, int> changePlayerHp;
     public event Action<int, int> changeProgress;
 
+    public Dictionary<int, float> chainBonus;
+
     protected override void Awake()
     {
         base.Awake();
         enemyKillCount = 0;
         goalKillCount = 10;
+
         heroEntry = new BaseHero[3];
         entryHeroId = new CharacterBaseStatus[3]; // 스크립터블 오브젝트 안에 영웅 정보가 있음.
+
+        chainBonus = new Dictionary<int, float>();
+
+        chainBonus[1] = 1f;
+        chainBonus[2] = 2.2f;
+        chainBonus[3] = 4.5f;
+
         SceneManager.sceneLoaded += OnSceneLoad;
     }
 
@@ -137,6 +148,18 @@ public class BattleManager : SingletonePattern <BattleManager>
             // 영웅이 죽으면 게임매니저에게 끝났다고 알림.
             GameManager.Instance.FailedGame();
         }
+    }
+
+    public GameObject RequestSkillObj(int id)
+    {
+        for (int i = 0; i < heroEntry.Length; i++)
+        {
+            if (id == heroEntry[i].status.UniqueId)
+            {
+                return poolManager.GetSkillObject(i);
+            }
+        }
+        return null;
     }
 
     public void Healing(int amount)
